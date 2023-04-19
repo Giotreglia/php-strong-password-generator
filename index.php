@@ -9,20 +9,7 @@ $symbols = [".","!","?","$","%"];
 
 $passwordCarachters = array_merge($letters, $CapLetters, $numbers, $symbols);
 
-function randomPassword($length, $array) {
-    $result = '';
-    for ($i=0; $i < $length; $i++) { 
-        $result .= $array[rand(0, count($array))];
-    }
-    
-    return $result;
-}
-
-
 ?>
-
-
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -35,6 +22,8 @@ function randomPassword($length, $array) {
 </head>
 <body class="bg-dark py-5">
 
+    <?php require __DIR__ . '/functions.php'; ?>
+
     <div class="container d-flex flex-column align-items-center my-5">
 
             <!-- Titolo -->
@@ -43,15 +32,16 @@ function randomPassword($length, $array) {
 
             <!-- Risultato -->
             
-                <?php if (isset($_GET['password'])) { ?>
-                    <div class="alert alert-info w-100 my-2 text-center" role="alert">
+            <?php if (isset($_GET['password'])) { ?>
+                <div class="alert alert-info w-100 my-2 text-center" role="alert">
 
-                        <?php echo 'La tua password è : ' .  randomPassword($passwordLength, $passwordCarachters);?>
-                        
-                    </div>
-                <?php } ?>
+                    <?php echo 'La tua password è : ' .  randomPassword($passwordLength, $passwordCarachters);?>
+
+                </div>
+            <?php } ?>
             
 
+            <!-- Form -->            
             <div class="container bg-light rounded my-2 py-2">
                 <form action="index.php" method="GET">
                     <!-- Password -->
